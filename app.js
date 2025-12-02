@@ -154,9 +154,8 @@ function renderTransactions() {
       (txn) => `
       <div class="transaction-item">
         <div class="left">
-          <div class="category-icon" style="background-color: ${
-            txn.category_color_hex || "#9E9E9E"
-          }">
+          <div class="category-icon" style="background-color: ${txn.category_color_hex || "#9E9E9E"
+        }">
             ${txn.category_name.charAt(0)}
           </div>
           <div class="info">
@@ -167,15 +166,13 @@ function renderTransactions() {
         <div class="right">
           <span class="amount ${txn.type}">
             ${txn.type === "income" ? "+" : "-"}${Number(
-        txn.amount
-      ).toLocaleString()}
+          txn.amount
+        ).toLocaleString()}
           </span>
-          <button class="edit-btn" onclick="window.editTransaction('${
-            txn.id
-          }')">✎</button>
-          <button class="delete-btn" onclick="window.deleteTransaction('${
-            txn.id
-          }')">✕</button>
+          <button class="edit-btn" onclick="window.editTransaction('${txn.id
+        }')">✎</button>
+          <button class="delete-btn" onclick="window.deleteTransaction('${txn.id
+        }')">✕</button>
         </div>
       </div>
     `
@@ -364,19 +361,16 @@ async function openManageCategoryModal() {
     .map(
       (cat) => `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:8px; background:#f9f9f9; border-radius:8px;">
-        <div style="display:flex; align-items:center; gap:8px; cursor:pointer; flex:1;" onclick="window.editCategory('${
-          cat.id
+        <div style="display:flex; align-items:center; gap:8px; cursor:pointer; flex:1;" onclick="window.editCategory('${cat.id
         }', '${cat.name}', '${cat.color_hex}')">
-          <span style="width:12px; height:12px; border-radius:50%; background:${
-            cat.color_hex
-          }"></span>
+          <span style="width:12px; height:12px; border-radius:50%; background:${cat.color_hex
+        }"></span>
           <span>${cat.name}</span>
           <span style="font-size:0.8em; color:#999;">(點擊編輯)</span>
         </div>
-        ${
-          cat.id !== "1"
-            ? `<button onclick="window.deleteCategory('${cat.id}')" style="border:none; background:none; color:red; cursor:pointer; padding:4px 8px;">✕</button>`
-            : ""
+        ${cat.id !== "1"
+          ? `<button onclick="window.deleteCategory('${cat.id}')" style="border:none; background:none; color:red; cursor:pointer; padding:4px 8px;">✕</button>`
+          : ""
         }
       </div>
     `
@@ -513,8 +507,7 @@ window.editTransaction = async function (id) {
   const categoryOptions = categories
     .map(
       (cat) =>
-        `<option value="${cat.id}" ${
-          cat.id === txn.category_id ? "selected" : ""
+        `<option value="${cat.id}" ${cat.id === txn.category_id ? "selected" : ""
         }>${cat.name}</option>`
     )
     .join("");
@@ -525,9 +518,8 @@ window.editTransaction = async function (id) {
       <form id="swal-txn-form" class="swal-form">
         <div class="form-group">
           <label>項目名稱</label>
-          <input type="text" id="swal-note" class="swal2-input" placeholder="例如：午餐、搭公車、買卡片" value="${
-            txn.note || ""
-          }" required autofocus>
+          <input type="text" id="swal-note" class="swal2-input" placeholder="例如：午餐、搭公車、買卡片" value="${txn.note || ""
+      }" required autofocus>
         </div>
         <div class="form-group">
           <label>類別</label>
@@ -537,26 +529,22 @@ window.editTransaction = async function (id) {
         </div>
         <div class="form-group">
           <label>金額</label>
-          <input type="number" id="swal-amount" class="swal2-input" placeholder="多少錢？" min="1" value="${
-            txn.amount
-          }" required>
+          <input type="number" id="swal-amount" class="swal2-input" placeholder="多少錢？" min="1" value="${txn.amount
+      }" required>
         </div>
         <div class="form-group">
           <label>收支</label>
           <select id="swal-type" class="swal2-select">
-            <option value="expense" ${
-              txn.type === "expense" ? "selected" : ""
-            }>支出</option>
-            <option value="income" ${
-              txn.type === "income" ? "selected" : ""
-            }>收入</option>
+            <option value="expense" ${txn.type === "expense" ? "selected" : ""
+      }>支出</option>
+            <option value="income" ${txn.type === "income" ? "selected" : ""
+      }>收入</option>
           </select>
         </div>
         <div class="form-group">
           <label>日期</label>
-          <input type="date" id="swal-date" class="swal2-input" value="${
-            txn.date
-          }" required>
+          <input type="date" id="swal-date" class="swal2-input" value="${txn.date
+      }" required>
         </div>
       </form>
     `,
